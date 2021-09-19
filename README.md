@@ -12,11 +12,22 @@ It comes with the following installed and integrated:
 
 ## Installation
 
-Download and run with:
+Clone the repository and create the image:
 ```
-docker run -p 127.0.0.1:8888:8888 -it hyperreality/cryptohack:latest
+docker image build . -t cryptohack
 ```
-Then open 127.0.0.1:8888 in your browser.
+
+Create a Docker volume:
+```
+docker volume create sage_data
+```
+
+Run the Cryptohack container:
+```
+docker run -p 8888:8888 -v sage_data:/home/sage -it cryptohack
+```
+
+Open 127.0.0.1:8888 (or exposed IP) in your browser.
 
 ## Notes
 
