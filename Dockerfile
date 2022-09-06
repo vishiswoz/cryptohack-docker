@@ -11,7 +11,10 @@ RUN apt-get -qq update \
 
 USER sage
 
+RUN /home/sage/sage/local/bin/pip install --upgrade pip
+
 RUN /home/sage/sage/local/bin/pip install --no-cache-dir \
+    gmpy2 \
     pwntools \
     pyCryptoDome \
     z3-solver
