@@ -11,9 +11,9 @@ RUN apt-get -qq update \
 
 USER sage
 
-RUN /home/sage/sage/local/bin/pip install --upgrade pip
+RUN sage -pip install --upgrade pip
 
-RUN /home/sage/sage/local/bin/pip install --no-cache-dir \
+RUN sage -pip install --no-cache-dir \
     gmpy2 \
     sympy \
     numpy \
