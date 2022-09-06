@@ -25,6 +25,9 @@ COPY --chown=sage:sage cryptohack_example.ipynb .
 COPY --chown=sage:sage z3_example.ipynb .
 COPY --chown=sage:sage custom.css /home/sage/.sage/jupyter-4.1/custom/custom.css
 
+RUN mkdir -p /home/sage/ctf-challenges
+VOLUME [ "/home/sage/ctf-challenges" ]
+
 ENV PWNLIB_NOTERM=true
 
 ENV BLUE='\033[0;34m'
@@ -40,5 +43,5 @@ ${RED}After Jupyter starts, visit http://127.0.0.1:8888${NOCOLOR} \n\
 ${BLUE}----------------------------------${NOCOLOR} \n\
 "
 
-CMD ["echo -e $BANNER && sage -n jupyter --NotebookApp.token='' --no-browser --ip='0.0.0.0' --port=8888"]
+CMD ["echo -e $BANNER && cd /home/sage/ctf-challenges && sage -n jupyter --NotebookApp.token='' --no-browser --ip='0.0.0.0' --port=8888"]
 
