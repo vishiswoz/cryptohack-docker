@@ -2,6 +2,9 @@ FROM sagemath/sagemath:latest
 
 USER root
 
+RUN sudo sed -i -r 's/([a-z]{2}.)?archive.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list \
+    && sudo sed -i -r 's/security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+
 RUN apt-get -qq update \
     && apt-get -qq install -y --no-install-recommends netcat tmux vim \
     && rm -rf /var/lib/apt/lists/*
