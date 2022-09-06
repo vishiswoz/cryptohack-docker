@@ -2,8 +2,7 @@ FROM sagemath/sagemath:latest
 
 USER root
 
-RUN apt-get -qq update \
-    && apt-get -qq install -y --no-install-recommends \
+RUN apt-get -qq install -y --no-install-recommends \
     netcat \
     tmux \
     vim \
