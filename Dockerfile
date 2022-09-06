@@ -9,6 +9,9 @@ RUN apt-get -qq update \
     && apt-get -qq install -y --no-install-recommends netcat tmux vim \
     && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p /home/sage/ctf-challenges
+VOLUME [ "/home/sage/ctf-challenges" ]
+
 USER sage
 
 RUN sage -pip install --upgrade pip
@@ -24,9 +27,6 @@ RUN sage -pip install --no-cache-dir \
 COPY --chown=sage:sage cryptohack_example.ipynb .
 COPY --chown=sage:sage z3_example.ipynb .
 COPY --chown=sage:sage custom.css /home/sage/.sage/jupyter-4.1/custom/custom.css
-
-RUN mkdir -p /home/sage/ctf-challenges
-VOLUME [ "/home/sage/ctf-challenges" ]
 
 ENV PWNLIB_NOTERM=true
 
