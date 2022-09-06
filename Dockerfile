@@ -15,6 +15,8 @@ RUN /home/sage/sage/local/bin/pip install --upgrade pip
 
 RUN /home/sage/sage/local/bin/pip install --no-cache-dir \
     gmpy2 \
+    sympy \
+    numpy \
     pwntools \
     pyCryptoDome \
     z3-solver
