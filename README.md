@@ -12,10 +12,25 @@ It comes with the following installed and integrated:
 
 ## Installation
 
-Download and run with:
+### Build
+
+```bash
+cd cryptohack-docker
+docker build . -t cryptohack
 ```
+
+### Run
+```bash
 docker run -p 8888:8888 -v /home/vishwa/ctf-challenges:/home/sage/ctf-challenges -it cryptohack
 ```
+
+### Run with VirtualBox Shared Folder
+```bash
+docker run -p 8888:8888 -v /media/sf_D_DRIVE:/home/sage/ctf-challenges --group-add 144 -it cryptohack
+```
+
+The `144` here is the gid of the `vboxsf` group on the host machine.
+
 Then open 127.0.0.1:8888 in your browser.
 
 ## Notes
