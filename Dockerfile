@@ -7,7 +7,16 @@ USER root
 
 RUN apt-get -qq update \
     && apt-get -qq install -y --no-install-recommends netcat tmux vim \
+    && apt install -y libopenblas-dev libgmp-dev libmpfr-dev fplll-tools libfplll-dev libeigen3-dev build-essential git cmake \
     && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/keeganryan/flatter.git \
+    && cd flatter \ 
+    && mkdir build && cd ./build \
+    && cmake .. \
+    && make \
+    && make install \
+    && ldconfig
 
 USER sage
 
@@ -15,6 +24,7 @@ RUN sage -pip install --upgrade pip
 
 RUN sage -pip install --no-cache-dir \
     gmpy2 \
+    tqdm \
     sympy \
     numpy \
     pwntools \
