@@ -28,6 +28,7 @@ RUN sage -pip install --no-cache-dir \
     sympy \
     numpy \
     pwntools \
+    pyelftools==0.29 \
     pyCryptoDome \
     z3-solver
 
