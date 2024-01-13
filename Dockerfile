@@ -18,7 +18,9 @@ RUN git clone https://github.com/keeganryan/flatter.git \
     && make install \
     && ldconfig
 
-RUN git clone https://github.com/josephsurin/lattice-based-cryptanalysis.git
+RUN git clone https://github.com/josephsurin/lattice-based-cryptanalysis.git \
+    && cd lattice-based-cryptanalysis \
+    && sage -pip install .
 
 USER sage
 
@@ -30,12 +32,12 @@ RUN sage -pip install --no-cache-dir \
     sympy \
     numpy \
     pwntools \
+    fastecdsa \
+    ecdsa \
+    cryptography \
     pyelftools==0.29 \
     pyCryptoDome \
     z3-solver
-
-WORKDIR lattice-based-cryptanalysis
-RUN sage -pip install .
 
 COPY --chown=sage:sage cryptohack_example.ipynb .
 COPY --chown=sage:sage z3_example.ipynb .
